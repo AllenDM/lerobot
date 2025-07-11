@@ -355,11 +355,12 @@ class GamepadControllerHID(InputController):
     def find_device(self):
         """Look for the gamepad device by vendor and product ID."""
         import hid
-
+        
         devices = hid.enumerate()
         for device in devices:
             device_name = device["product_string"]
-            if any(controller in device_name for controller in ["Logitech", "Xbox", "PS4", "PS5"]):
+            print(device_name)
+            if any(controller in device_name for controller in ["DualSense Wireless Controller", "Controller"]):
                 return device
 
         logging.error(
